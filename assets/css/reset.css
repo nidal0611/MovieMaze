@@ -102,7 +102,7 @@ a {
  */
 
 ::-webkit-scrollbar {
-  background: transparent;
+  background-color:(--oxford-blue);
   border-left: 1px solid var(--oxford-blue);
 }
 

@@ -119,7 +119,10 @@ nav { margin-right: 200px; }
   font-weight: var(--fw-5);
 }
 
-.navbar-link:hover { color: var(--light-azure); }
+.navbar-link:hover 
+{ color: var(--light-azure);
+  transition: 0.37864s;
+ }
 
 /**
  * live indicator style 
@@ -328,7 +331,7 @@ input ~ .checked-radio-bg {
    * variable for changing position and size
    * besed on radio checked 
    */
-  --width: 85px;
+  --width: 120px;
   --left:   5px;
 
   background: var(--oxford-blue);
@@ -342,12 +345,12 @@ input ~ .checked-radio-bg {
 
 #popular:checked ~ .checked-radio-bg {
   --width: 73px;
-  --left:  90px;
+  --left:  120px;
 }
 
 #newest:checked ~ .checked-radio-bg {
   --width:  81px;
-  --left:  163px;
+  --left:  193px;
 }
 
 
@@ -702,3 +705,84 @@ ul .link-item:not(:last-child) { margin-bottom: 10px; }
 .wrapper { display: flex; }
 
 .wrapper a:not(:last-child) { margin-right: 30px; }
+
+
+/* Caroussel*/
+.banner {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 20px;   
+  max-height: 500px;
+  
+}
+
+/* Hide the images by default */
+.banner-card{
+   position: relative;
+   width: 100%;
+   height: 100%;
+   display: none;
+   border-radius: 10px;
+   background: linear-gradient(to bottom, rgb(0, 134, 164) 0%,rgb(0, 28, 34) 100%);    
+   
+}
+.banner-img{
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+   z-index: -1;            
+}
+
+
+.buttons{
+   width: 100%;
+
+}
+/* Next & previous buttons */
+.prev, .next {
+   cursor: pointer;
+   position: absolute;
+   top: 50%;
+   width: auto;
+   margin-top: -22px;
+   padding: 16px;
+   color: white;
+   font-weight: bold;
+   font-size: 18px;
+   transition: 0.6s ease;
+   border-radius: 0 3px 3px 0;
+   z-index: 3;
+
+}
+
+/* Position the "next button" to the right */
+.next {
+right:180px;
+border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a  background color */
+.prev:hover, .next:hover {
+background-color: rgba(116, 116, 116, 0.8);
+}
+
+
+
+
+/* The dots/bullets/indicators */
+.dot {
+cursor: pointer;
+height: 14px;
+width: 14px;
+margin: 10px 0;
+background-color: #bbb;
+border-radius: 50%;
+display: inline-block;
+transition: background-color 0.6s ease;
+}
+
+.active{
+  background-color: #007FFF;
+}
