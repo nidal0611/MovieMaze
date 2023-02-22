@@ -35,12 +35,57 @@
         }
       }
     }
-    
+    /* categories function */
+    function hideElementsOnSelectChange(selectId, elementClass) {
+      const select = document.getElementById(selectId);
+      const elements = document.getElementsByClassName(elementClass);
+      let optionValues = [];
+
+      for (let i = 0; i < elements.length; i++) {
+        let category = elements[i].getAttribute('data-category');
+        if (!optionValues.includes(category) && category) {
+          optionValues.push(category);
+          let option = document.createElement('option');
+          option.value = category;
+          option.text = category;
+          select.appendChild(option);
+        }
+      }
+
+      select.addEventListener('change', function () {
+        let selectValue = this.value;
+        let showElements = [];
+        let hideElements = [];
+
+        for (let i = 0; i < elements.length; i++) {
+          let category = elements[i].getAttribute('data-category');
+          if (category === selectValue) {
+            showElements.push(elements[i]);
+          } else {
+            hideElements.push(elements[i]);
+          }
+        }
+
+        if (selectValue === '') {
+          for (let i = 0; i < elements.length; i++) {
+            elements[i].style.display = '';
+          }
+        } else {
+          for (let i = 0; i < showElements.length; i++) {
+            showElements[i].style.display = '';
+          }
+
+          for (let i = 0; i < hideElements.length; i++) {
+            hideElements[i].style.display = 'none';
+          }
+        }
+      });
+    }
 
   </script>
 </head>
 
-<body>
+<body onload="hideElementsOnSelectChange('category-filter', 'movie-card')">
   <!--
     - main container
   -->
@@ -61,7 +106,7 @@
         </button>
 
         <a href="#" class="navbar-brand">
-          <img src="./assets/images/logo.png" alt="" />
+          <img src="./assets/images/MovieMaze.png" alt="" />
         </a>
 
         <!--
@@ -83,8 +128,18 @@
         <div class="navbar-actions">
           <div class="navbar-form">
             <input id="searchBox" type="text" name="search" placeholder="Search..." class="navbar-form-search"
-              onkeyup="search()" style="opacity: 30%;"/>
-
+              onkeyup="search()"  />
+              <script>
+                const inputElement = document.getElementById("searchBox");
+              
+                inputElement.addEventListener("keydown", function(event) {
+                  if (event.key === "Enter") {
+                    const targetElement = document.getElementById("viewSearch");
+                    window.location.hash = "#targetElement";
+                    targetElement.scrollIntoView();
+                  }
+                });
+              </script>
             <button class="navbar-form-btn">
               <ion-icon name="search-outline"></ion-icon>
             </button>
@@ -138,7 +193,7 @@
                 <span>2h 11m</span>
               </div>
 
-             
+
             </div>
 
             <h2 class="card-title">John Wick: Chapter 3 - Parabellum</h2>
@@ -164,7 +219,7 @@
                 <span>2h 11m</span>
               </div>
 
-              
+
             </div>
 
             <h2 class="card-title">John Wick: Chapter 4 - Parabellum</h2>
@@ -190,57 +245,57 @@
                 <span>2h 11m</span>
               </div>
 
-             
+
             </div>
 
             <h2 class="card-title">John Wick: Chapter 5 - Parabellum</h2>
           </div>
         </div>
         <div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
         </div>
         <div class="buttons">
-            <a class="prev" onclick="change(-1)">&#10094;</a>
-            <a class="next" onclick="change(1)">&#10095;</a>
+          <a class="prev" onclick="change(-1)">&#10094;</a>
+          <a class="next" onclick="change(1)">&#10095;</a>
         </div>
       </section>
 
       <script>
         var index = 1;
-    showslides(index);
+        showslides(index);
 
-    function change(x){
-      showslides(index += 1);
-    }
+        function change(x) {
+          showslides(index += 1);
+        }
 
-    setInterval(function() {
-                change(1);
-            }, 4000);
-    
-    function showslides(x){
-      var images = document.getElementsByClassName("banner-card");
-      var dots = document.getElementsByClassName("dot");
+        setInterval(function () {
+          change(1);
+        }, 4000);
 
-      if (x > images.length){
-        index = 1;
-      }
-      if (x < 1){
-        index = images.length;
-      }
+        function showslides(x) {
+          var images = document.getElementsByClassName("banner-card");
+          var dots = document.getElementsByClassName("dot");
 
-      for(var i = 0; i < images.length; i++){
-          images[i].style.display = "none";
-      }
-      for (var i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
-      
-      images[index-1].style.display = "block"; 
-      dots[index-1].className += " active";
+          if (x > images.length) {
+            index = 1;
+          }
+          if (x < 1) {
+            index = images.length;
+          }
 
-    }
+          for (var i = 0; i < images.length; i++) {
+            images[i].style.display = "none";
+          }
+          for (var i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+
+          images[index - 1].style.display = "block";
+          dots[index - 1].className += " active";
+
+        }
       </script>
 
 
@@ -248,19 +303,16 @@
       <!--
         - #MOVIES SECTION
       -->
-      <section class="movies">
+      <section class="movies" id="viewSearch">
         <!--
           - filter bar
         -->
         <div class="filter-bar">
           <div class="filter-dropdowns">
-            <select name="genre" class="genre">
-              <option value="all genres">All genres</option>
-              <option value="action">Action</option>
-              <option value="adventure">Adventure</option>
-              <option value="animal">Animal</option>
-              <option value="animation">Animation</option>
-              <option value="biography">Biography</option>
+            <select name="genre" class="genre" id="category-filter">
+              <option value="">All genres</option>
+
+
             </select>
 
           </div>
@@ -283,8 +335,8 @@
           - movies grid
         -->
 
-        <div class="movies-grid">
-          <div class="movie-card">
+        <div class="movies-grid" >
+          <div class="movie-card" data-category="test">
             <div class="card-head">
               <img src="./assets/images/movies/red-notice.jpg" alt="" class="card-img" />
 
@@ -314,7 +366,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-category="Action">
             <div class="card-head">
               <img src="./assets/images/movies/spider-men.jpg" alt="" class="card-img" />
 
@@ -344,7 +396,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-category="Sci-fi">
             <div class="card-head">
               <img src="./assets/images/movies/matrix.jpg" alt="" class="card-img" />
 
@@ -365,7 +417,7 @@
             </div>
 
             <div class="card-body">
-              <h3 class="card-title">The Matrix Resurrections</h3>
+              <h3 class="card-title ">The Matrix Resurrections</h3>
 
               <div class="card-info">
                 <span class="genre">Sci-fi/Action</span>
@@ -374,7 +426,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-category="Marvel">
             <div class="card-head">
               <img src="./assets/images/movies/eternals.jpg" alt="" class="card-img" />
 

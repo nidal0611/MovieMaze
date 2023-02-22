@@ -786,3 +786,6 @@ transition: background-color 0.6s ease;
 .active{
   background-color: #007FFF;
 }
+input[type="text"]::placeholder{
+  opacity:40%;
+}
