@@ -789,3 +789,38 @@ transition: background-color 0.6s ease;
 input[type="text"]::placeholder{
   opacity:40%;
 }
+.trailer-card{
+  margin-top: 20px;;
+  display: flex;
+  gap:100px;
+}
+.trailer-info{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.trailer-info h3{
+  font-size: 40px;
+}
+.trailer-info h4{
+  color: #007FFF;
+
+}
+.trailer-info-time{
+  display: flex;
+  gap: 100px;
+}
+.cast{
+  display: flex;
+  gap: 10px;
+}
+.cast img{
+  border-radius: 50%;
+  width: 60px;
+  background: none;
+}
+.cast-actor{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

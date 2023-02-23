@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png" />
+
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/media_query.css" />
+    <title>MovieMaze</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <!--
+          - #HEADER SECTION
+        -->
+
+        <header class="">
+            <div class="navbar">
+                <!--
+              - menu button for small screen
+            -->
+                <button class="navbar-menu-btn">
+                    <span class="one"></span>
+                    <span class="two"></span>
+                    <span class="three"></span>
+                </button>
+
+                <a href="#" class="navbar-brand">
+                    <img src="./assets/images/MovieMaze.png" alt="" />
+                </a>
+
+                <!--
+              - navbar navigation
+            -->
+
+                <nav class="">
+                    <ul class="navbar-nav">
+                        <li><a href="#" class="navbar-link">Coming Soon</a></li>
+                        <li><a href="#category" class="navbar-link">News</a></li>
+                        <li><a href="#live" class="navbar-link">Social Pages</a></li>
+                    </ul>
+                </nav>
+
+                <!--
+              sign-in
+            -->
+
+                <div class="navbar-actions">
+                    <div class="navbar-form">
+                        <button class="navbar-form-close">
+                            <ion-icon name="close-circle-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <a href="#" class="navbar-signin">
+                        <span>Sign in</span>
+                        <ion-icon name="log-in-outline"></ion-icon>
+                    </a>
+                </div>
+            </div>
+           
+        </header>
+         <div class="trailer-card">
+            <video width="60%" height="60%" controls>
+                <source src="./assets/images/Interstellar.mp4" type="video/mp4">
+                <source src="movie.ogg" type="video/ogg">
+                Your browser does not support the video tag.
+              </video>
+              <div class="trailer-info">
+                <h3>Interstellar <span style="color: #007FFF; font-size: 20px;"><br> dir.</span><span style="font-size: 25px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Christopher Nolan</span></h3>
+              <div class="trailer-info-time">
+                <h4>2014</h4>
+                <h4>3h</h4>
+              </div>
+              <p style="color:azure">9.2</p>
+              <h4>Description</h4>
+              <p style="color:white; font-size: 14px;">When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.</p>
+              <div class="cast">
+                  <div class="cast-actor">
+                    <img src="assets/images/HBO-Logo-square.jpg" alt="cast">
+                    <h4>Actor1</h4>
+                  </div>
+
+              </div>
+            </div>
+
+         </div>
+        <script src="./assets/js/main.js"></script>
+
+        <!--
+          - ionicon link
+        -->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
