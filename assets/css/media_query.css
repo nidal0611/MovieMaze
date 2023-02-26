@@ -362,13 +362,14 @@
 
   .trailer-card video {
     
-    width:90%;
+    width:95%;
     margin-bottom: 20px;
   }
 
   .trailer-info {
     text-align: center;
     margin-bottom: 40px;
+    width:95%;
   }
 
   .trailer-info h3 {
@@ -397,6 +398,9 @@
     max-width: 100px;
     margin: 10px;
     text-align: center;
+  }
+  .reviews-container{
+    width:95%;
   }
 }
 
