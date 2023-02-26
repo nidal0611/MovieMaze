@@ -2,15 +2,6 @@
 <html lang="en">
 
 <head>
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVL98BG1ZF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MVL98BG1ZF');
-</script>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -92,7 +83,6 @@
     }
 
   </script>
- 
 </head>
 
 <body onload="hideElementsOnSelectChange('category-filter', 'movie-card')">
@@ -138,18 +128,18 @@
         <div class="navbar-actions">
           <div class="navbar-form">
             <input id="searchBox" type="text" name="search" placeholder="Search..." class="navbar-form-search"
-              onkeyup="search()"  />
-              <script>
-                const inputElement = document.getElementById("searchBox");
-              
-                inputElement.addEventListener("keydown", function(event) {
-                  if (event.key === "Enter") {
-                    const targetElement = document.getElementById("viewSearch");
-                    window.location.hash = "#targetElement";
-                    targetElement.scrollIntoView();
-                  }
-                });
-              </script>
+              onkeyup="search()" />
+            <script>
+              const inputElement = document.getElementById("searchBox");
+
+              inputElement.addEventListener("keydown", function (event) {
+                if (event.key === "Enter") {
+                  const targetElement = document.getElementById("viewSearch");
+                  window.location.hash = "#targetElement";
+                  targetElement.scrollIntoView();
+                }
+              });
+            </script>
             <button class="navbar-form-btn">
               <ion-icon name="search-outline"></ion-icon>
             </button>
@@ -328,25 +318,75 @@
           </div>
 
           <div class="filter-radios">
-            <input type="radio" name="grade" id="featured" checked />
+            <input type="radio" name="grade" id="featured" value="rate" checked/>
             <label for="featured">Highest rated</label>
 
-            <input type="radio" name="grade" id="popular" />
+            <input type="radio" name="grade" id="popular" value="popular" />
             <label for="popular">Popular</label>
 
             <input type="radio" name="grade" id="newest" />
             <label for="newest">Newest</label>
 
             <div class="checked-radio-bg"></div>
+
           </div>
+          <script>
+
+            function sortMovies() {
+              const radios = document.getElementsByName('grade');
+              let selectedRadio;
+              for (let i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                  selectedRadio = radios[i];
+                  break;
+                }
+              }
+
+              const movies = document.getElementsByClassName('movie-card');
+              const moviesArray = Array.from(movies);
+
+              if (selectedRadio.value === 'popular') {
+                moviesArray.sort((a, b) => {
+                  const aPopularity = parseInt(a.getAttribute('data-popularity'));
+                  const bPopularity = parseInt(b.getAttribute('data-popularity'));
+                  return bPopularity - aPopularity;
+                });
+              } else if (selectedRadio.value === 'newest') {
+                moviesArray.sort((a, b) => {
+                  const aReleaseDate = new Date(a.getAttribute('data-release-date'));
+                  const bReleaseDate = new Date(b.getAttribute('data-release-date'));
+                  return bReleaseDate - aReleaseDate;
+                });
+
+              } else if (selectedRadio.value === 'rate') {
+                moviesArray.sort((a, b) => {
+                  const arate = parseFloat(a.getAttribute('data-rate'));
+                  const brate = parseFloat(b.getAttribute('data-rate'));
+                  return brate - arate;
+                });
+              }
+
+              const movieList = document.getElementById('movie-list');
+              movieList.innerHTML = '';
+              moviesArray.forEach(movie => {
+                movieList.appendChild(movie);
+              });
+            }
+
+            const sortRadios = document.getElementsByName('grade');
+            sortRadios.forEach(radio => {
+              radio.addEventListener('change', sortMovies);
+            });
+          </script>
+
         </div>
 
         <!--
           - movies grid
         -->
 
-        <div class="movies-grid" >
-          <div class="movie-card" data-category="test">
+        <div class="movies-grid" id="movie-list">
+          <div class="movie-card" data-category="test" data-popularity="1" data-rate="6.4">
             <div class="card-head">
               <img src="./assets/images/movies/red-notice.jpg" alt="" class="card-img" />
 
@@ -376,7 +416,7 @@
             </div>
           </div>
 
-          <div class="movie-card" data-category="Action">
+          <div class="movie-card" data-category="Action" data-popularity="2" data-rate="7.4">
             <div class="card-head">
               <img src="./assets/images/movies/spider-men.jpg" alt="" class="card-img" />
 
@@ -406,7 +446,7 @@
             </div>
           </div>
 
-          <div class="movie-card" data-category="Sci-fi">
+          <div class="movie-card" data-category="Sci-fi" data-popularity="3" data-rate="5.7">
             <div class="card-head">
               <img src="./assets/images/movies/matrix.jpg" alt="" class="card-img" />
 
@@ -436,7 +476,7 @@
             </div>
           </div>
 
-          <div class="movie-card" data-category="Marvel">
+          <div class="movie-card" data-category="Marvel" data-popularity="4" data-rate="6.8">
             <div class="card-head">
               <img src="./assets/images/movies/eternals.jpg" alt="" class="card-img" />
 
@@ -466,7 +506,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-popularity="8" data-rate="8.2">
             <div class="card-head">
               <img src="./assets/images/movies/dune.jpg" alt="" class="card-img" />
 
@@ -496,7 +536,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-popularity="14" data-rate="8.3">
             <div class="card-head">
               <img src="./assets/images/movies/1917.jpg" alt="" class="card-img" />
 
@@ -526,7 +566,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-popularity="7" data-rate="7.6">
             <div class="card-head">
               <img src="./assets/images/movies/shang-chi.jpg" alt="" class="card-img" />
 
@@ -558,7 +598,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-popularity="1" data-rate="8.0">
             <div class="card-head">
               <img src="./assets/images/movies/casino-royale.jpg" alt="" class="card-img" />
 
@@ -588,7 +628,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-popularity="10" data-rate="9.0">
             <div class="card-head">
               <img src="./assets/images/movies/dark-knight.jpg" alt="" class="card-img" />
 
@@ -618,7 +658,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-popularity="5" data-rate="7.3">
             <div class="card-head">
               <img src="./assets/images/movies/panther.jpg" alt="" class="card-img" />
 
@@ -648,7 +688,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-popularity="9" data-rate="6.7">
             <div class="card-head">
               <img src="./assets/images/movies/venom.jpg" alt="" class="card-img" />
 
@@ -678,7 +718,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-popularity="12" data-rate="8.9">
             <div class="card-head">
               <img src="./assets/images/movies/LOTR.jpg" alt="" class="card-img" />
 
@@ -710,7 +750,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-popularity="15" data-rate="8.6">
             <div class="card-head">
               <img src="./assets/images/movies/saving-private-ryan.jpg" alt="" class="card-img" />
 
@@ -739,38 +779,40 @@
               </div>
             </div>
           </div>
+          
+            <div class="movie-card" data-rate="8.6" data-popularity="15" data-category="Sci-fi">
+              <a href="movie-page.html">
+              <div class="card-head">
+                <img src="./assets/images/movies/interstaller.jpg" alt="" class="card-img" />
 
-          <div class="movie-card">
-            <div class="card-head">
-              <img src="./assets/images/movies/interstaller.jpg" alt="" class="card-img" />
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
-                </div>
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>8.6</span>
+                  </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>8.6</span>
-                </div>
-
-                <div class="play">
-                  <ion-icon name="play-circle-outline"></ion-icon>
+                  <div class="play">
+                    <ion-icon name="play-circle-outline"></ion-icon>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="card-body">
-              <h3 class="card-title">Interstellar</h3>
+              <div class="card-body">
+                <h3 class="card-title">Interstellar</h3>
 
-              <div class="card-info">
-                <span class="genre">Sci-fi/Adventure</span>
-                <span class="year">2014</span>
+                <div class="card-info">
+                  <span class="genre">Sci-fi/Adventure</span>
+                  <span class="year">2014</span>
+                </div>
               </div>
+              </a>
             </div>
-          </div>
-
-          <div class="movie-card">
+          
+          <div class="movie-card" data-rate="8.5">
             <div class="card-head">
               <img src="./assets/images/movies/gladiator.jpg" alt="" class="card-img" />
 
@@ -800,7 +842,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-popularity="1" data-rate="8.4">
             <div class="card-head">
               <img src="./assets/images/movies/endgame.jpg" alt="" class="card-img" />
 
@@ -830,7 +872,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-popularity="3" data-rate="5.4">
             <div class="card-head">
               <img src="./assets/images/movies/ww84.jpg" alt="" class="card-img" />
 
@@ -860,7 +902,7 @@
             </div>
           </div>
 
-          <div class="movie-card">
+          <div class="movie-card" data-popularity="6" data-rate="6.8">
             <div class="card-head">
               <img src="./assets/images/movies/captain-marvel.jpg" alt="" class="card-img" />
 
