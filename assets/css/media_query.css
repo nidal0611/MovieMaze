@@ -258,13 +258,14 @@
   }
 
   .trailer-info {
-    width: 60%;
+    width: 90%;
 
   }
 
   .trailer-card video {
     margin: top 20px;
-    margin: auto
+    margin: auto;
+    width:80%;
   }
 
   .trailer-card {
@@ -289,7 +290,7 @@
   }
 
   .reviews-container {
-    width: 60%;
+    width: 90%;
     position: relative;
     margin: auto;
     margin-top: 20px;
@@ -360,8 +361,8 @@
   }
 
   .trailer-card video {
-    width: 100%;
-    max-width: 300px;
+    
+    width:90%;
     margin-bottom: 20px;
   }
 
