@@ -20,6 +20,8 @@
   <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
   <script>
     function search() {
+      var filter=document.getElementById("category-filter");
+      filter.value="genres";
       var input, filter, ul, li, a, i, txtValue;
       input = document.getElementById("searchBox");
       filter = input.value.toUpperCase();
@@ -83,6 +85,15 @@
     }
 
   </script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVL98BG1ZF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MVL98BG1ZF');
+</script>
 </head>
 
 <body onload="hideElementsOnSelectChange('category-filter', 'movie-card')">
@@ -136,7 +147,7 @@
                 if (event.key === "Enter") {
                   const targetElement = document.getElementById("viewSearch");
                   window.location.hash = "#targetElement";
-                  targetElement.scrollIntoView();
+                  targetElement.scrollIntoView({behavior:"smooth"});
                 }
               });
             </script>
@@ -310,7 +321,7 @@
         <div class="filter-bar">
           <div class="filter-dropdowns">
             <select name="genre" class="genre" id="category-filter">
-              <option value="">All genres</option>
+              <option value="genres">All genres</option>
 
 
             </select>
@@ -318,10 +329,11 @@
           </div>
 
           <div class="filter-radios">
-            <input type="radio" name="grade" id="featured" value="rate" checked/>
+            
+            <input type="radio" name="grade" id="featured" value="rate" >
             <label for="featured">Highest rated</label>
 
-            <input type="radio" name="grade" id="popular" value="popular" />
+            <input type="radio" name="grade" id="popular" value="popular" checked/>
             <label for="popular">Popular</label>
 
             <input type="radio" name="grade" id="newest" />

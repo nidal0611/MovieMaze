@@ -371,7 +371,7 @@ input~.checked-radio-bg {
 
 #popular:checked~.checked-radio-bg {
   --width: 73px;
-  --left: 120px;
+  --left: 122px;
 }
 
 #newest:checked~.checked-radio-bg {
@@ -740,6 +740,7 @@ footer {
 
 .link-heading {
   margin-bottom: 20px;
+  color: #007FFF;
 }
 
 .link-item {
@@ -972,4 +973,66 @@ input[type="text"]::placeholder {
 #to_top:hover {
   background-color: white;
   color: #007FFF;
+}
+
+
+
+/*About us*/
+
+.about h1{
+  color: #007FFF;
+  margin: 20px 0;
+  border-bottom: solid 2px white;
+  
+}
+.about p{
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+.about h3{
+  color: #007FFF;
+  font-size: 20px;
+  margin: 10px 0;
+}
+.about ul li{
+  list-style: circle;
+  color: white;
+  font-weight: bold;
+}
+.about ul{
+  margin: 10px 40px;
+}
+
+
+
+/*News*/
+
+.news-container{
+  display: flex;
+
+  border-radius: 10px;
+}
+.news-container .column1{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background-color: hsla(218, 39%, 14%, 0.8);
+}
+.news-container .column2{
+  width: 30%;
+  
+}
+
+.News .news-container .column1 .news{
+  margin: 10px 10px; 
+}
+.News .news-container .column1 .facts{
+  margin: 10px 10px;
+}
+.News .news-container .column2 .top_grossing{
+  margin: 10px 10px;
+}
+.news{
+  padding:10px;
 }
