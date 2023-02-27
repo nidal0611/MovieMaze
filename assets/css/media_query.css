@@ -22,7 +22,7 @@
      * Spacing 
      */
 
-    --px: 80px;
+    --px: 60px;
     /* padding-left & padding-right */
 
   }
@@ -237,7 +237,7 @@
      * Spacing 
      */
 
-    --px: 20px;
+    --px: 10px;
     /* padding-left & padding-right */
 
   }
@@ -258,13 +258,14 @@
   }
 
   .trailer-info {
-    width: 60%;
+    width: 90%;
 
   }
 
   .trailer-card video {
     margin: top 20px;
-    margin: auto
+    margin: auto;
+    width:90%;
   }
 
   .trailer-card {
@@ -289,7 +290,7 @@
   }
 
   .reviews-container {
-    width: 60%;
+    width: 90%;
     position: relative;
     margin: auto;
     margin-top: 20px;
@@ -312,7 +313,7 @@
      * Spacing 
      */
 
-    --px: 10px;
+    --px: 5px;
     /* padding-left & padding-right */
 
   }
@@ -360,8 +361,8 @@
   }
 
   .trailer-card video {
-    width: 100%;
-    max-width: 300px;
+    width: 90%;
+ 
     margin-bottom: 20px;
   }
 
