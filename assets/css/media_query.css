@@ -218,6 +218,10 @@
     margin-left: 30px;
   }
 
+  .News {
+    padding-top: 90px;
+  }
+
 }
 
 
@@ -265,12 +269,12 @@
   .trailer-card video {
     margin: top 20px;
     margin: auto;
-    width:90%;
+    width: 90%;
   }
 
   .trailer-card {
     margin-top: 100px;
-   
+
   }
 
   .trailer-info h3 {
@@ -295,6 +299,12 @@
     margin: auto;
     margin-top: 20px;
   }
+
+  .about {
+    padding: 100px 0;
+  }
+
+
 }
 
 
@@ -361,15 +371,15 @@
   }
 
   .trailer-card video {
-    
-    width:95%;
+
+    width: 95%;
     margin-bottom: 20px;
   }
 
   .trailer-info {
     text-align: center;
     margin-bottom: 40px;
-    width:95%;
+    width: 95%;
   }
 
   .trailer-info h3 {
@@ -399,9 +409,34 @@
     margin: 10px;
     text-align: center;
   }
-  .reviews-container{
-    width:95%;
+
+  .reviews-container {
+    width: 95%;
   }
+
+  .column2 {
+    display: none;
+
+  }
+
+  .news-container {
+    justify-content: center;
+  }
+
+  .news-container .column1 {
+    width: 95%;
+
+
+  }
+
+  .column1 .news,
+  .column1 .facts {
+
+    margin-left: 0px;
+    padding-left: 0px;
+
+  }
+
 }
 
 
@@ -454,4 +489,5 @@
   .wrapper {
     margin-bottom: 20px;
   }
+
 }
