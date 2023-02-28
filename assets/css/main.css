@@ -175,7 +175,9 @@ nav {
   top: calc(50% - 10px);
   right: 10px;
 }
-
+.navbar img{
+  width:120%;
+}
 .navbar-form-btn ion-icon,
 .navbar-search-btn ion-icon {
   font-size: 20px;
@@ -352,13 +354,15 @@ nav {
   color: var(--light-azure);
 }
 
-input~.checked-radio-bg {
+#featured:checked~.checked-radio-bg,
+#popular:checked~.checked-radio-bg,
+#newest:checked~.checked-radio-bg
+  {
   /**
    * variable for changing position and size
    * besed on radio checked 
    */
-  --width: 120px;
-  --left: 5px;
+ 
 
   background: var(--oxford-blue);
   position: absolute;
@@ -368,7 +372,10 @@ input~.checked-radio-bg {
   width: var(--width);
   border-radius: 10px;
 }
-
+#featured:checked~.checked-radio-bg{
+ --width: 120px;
+  --left: 5px;
+}
 #popular:checked~.checked-radio-bg {
   --width: 73px;
   --left: 122px;
