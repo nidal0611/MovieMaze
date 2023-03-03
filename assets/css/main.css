@@ -247,7 +247,7 @@ nav {
 }
 
 .banner-card:hover .banner-img {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 .banner-card .card-content {
@@ -1118,7 +1118,7 @@ input[type="text"]::placeholder {
 .news ul li,
 .facts ul li {
   list-style: disc;
-  margin-left: 10px;
+  margin-left: 20px;
   font-weight: bold;
   font-size: 15px;
 }
@@ -1129,4 +1129,27 @@ input[type="text"]::placeholder {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 12px;
+}
+.news ul li{
+  margin: 20px 20px;
+}
+.refresh{
+  position: relative;
+  font-size: 30px;
+  color:#007FFF;
+  margin-left: 10%;
+}
+.top_grossing ion-icon{
+font-size:17px;
+
+}
+.top_grossing span{
+align-items: center;
+ padding-top: 0px;
+ font-weight: 500;
+}
+.text{
+  display: flex;
+  flex-direction: row;
+ align-items: center;
 }

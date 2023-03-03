@@ -68,7 +68,7 @@
           }
         }
 
-        if (selectValue === '') {
+        if (selectValue === 'genres') {
           for (let i = 0; i < elements.length; i++) {
             elements[i].style.display = '';
           }
@@ -82,8 +82,15 @@
           }
         }
       });
-    }
-
+     
+      }
+    
+ function refresh(){
+        location.reload();
+ }
+ function login(){
+  window.open("login.html");
+ }
   </script>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVL98BG1ZF"></script>
@@ -169,7 +176,7 @@
           </button>
 
           <a href="#" class="navbar-signin">
-            <a href="Login page/login.html"><span>Sign in</span></a>
+            <button onclick="login()"><span>Sign in</span></button>
             <ion-icon style="color: #007FFF;" name="log-in-outline"></ion-icon>
           </a>
           </a>
@@ -197,7 +204,7 @@
 
               <div class="year">
                 <ion-icon name="calendar"></ion-icon>
-                <span>2019</span>
+                <span>2023</span>
               </div>
 
               <div class="duration">
@@ -208,7 +215,7 @@
 
             </div>
 
-            <h2 class="card-title">John Wick: Chapter 5 - Parabellum</h2>
+            <h2 class="card-title">John Wick: Chapter 4</h2>
           </div>
         </div>
         <div class="banner-card">
@@ -323,12 +330,10 @@
           <div class="filter-dropdowns">
             <select name="genre" class="genre" id="category-filter">
               <option value="genres">All genres</option>
-
-
             </select>
 
           </div>
-
+        <button onclick="refresh()"><ion-icon class="refresh" name="refresh-circle"></ion-icon></button>
           <div class="filter-radios">
             
             <input type="radio" name="grade" id="featured" value="rate" >
@@ -337,7 +342,7 @@
             <input type="radio" name="grade" id="popular" value="popular" />
             <label for="popular">Popular</label>
 
-            <input type="radio" name="grade" id="newest" />
+            <input type="radio" name="grade" id="newest" value="newest" />
             <label for="newest">Newest</label>
 
             <div class="checked-radio-bg"></div>
@@ -400,7 +405,7 @@
 
         <div class="movies-grid" id="movie-list">
           
-          <div class="movie-card" data-category="test" data-popularity="1" data-rate="6.4">
+          <div class="movie-card" data-category="Acion/Comedy" data-popularity="1" data-rate="6.4" data-release-date="2021-11-04">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/red-notice.jpg" alt="" class="card-img" />
@@ -430,7 +435,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-category="Action" data-popularity="2" data-rate="7.4">
+          <div class="movie-card" data-category="Action/Adventure" data-popularity="2" data-rate="7.4" data-release-date="2021-12-17">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/spider-men.jpg" alt="" class="card-img" />
@@ -460,7 +465,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-category="Sci-fi" data-popularity="3" data-rate="5.7">
+          <div class="movie-card" data-category="Sci-fi/Action" data-popularity="3" data-rate="5.7" data-release-date="2021-12-22">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/matrix.jpg" alt="" class="card-img" />
@@ -490,7 +495,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-category="Marvel" data-popularity="4" data-rate="6.8">
+          <div class="movie-card" data-category="Adventure/Action" data-popularity="4" data-rate="6.8" data-release-date="2021-11-05">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/eternals.jpg" alt="" class="card-img" />
@@ -520,7 +525,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="8" data-rate="8.2">
+          <div class="movie-card" data-popularity="8" data-rate="8.2" data-category="Sci-fi/Adventure" data-release-date="2021-10-22">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/dune.jpg" alt="" class="card-img" />
@@ -550,7 +555,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="14" data-rate="8.3">
+          <div class="movie-card" data-popularity="14" data-rate="8.3" data-category="War/Drama" data-release-date="2019-12-25">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/1917.jpg" alt="" class="card-img" />
@@ -580,7 +585,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="7" data-rate="7.6">
+          <div class="movie-card" data-popularity="7" data-rate="7.6" data-category="Action/Fantasy" data-release-date="2021-09-02">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/shang-chi.jpg" alt="" class="card-img" />
@@ -612,7 +617,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="1" data-rate="8.0">
+          <div class="movie-card" data-popularity="1" data-rate="8.0" data-category="Action/Adventure" data-release-date="2006-11-16">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/casino-royale.jpg" alt="" class="card-img" />
@@ -642,7 +647,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="10" data-rate="9.0">
+          <div class="movie-card" data-popularity="10" data-rate="9.0" data-category="Action/Adventure" data-release-date="2008-07-24">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/dark-knight.jpg" alt="" class="card-img" />
@@ -672,7 +677,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="5" data-rate="7.3">
+          <div class="movie-card" data-popularity="5" data-rate="7.3" data-category="Action/Adventure" data-release-date="2018-02-14">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/panther.jpg" alt="" class="card-img" />
@@ -702,7 +707,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="9" data-rate="6.7">
+          <div class="movie-card" data-popularity="9" data-rate="6.7" data-category="Action/Adventure" data-release-date="2018-10-05">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/venom.jpg" alt="" class="card-img" />
@@ -732,7 +737,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="12" data-rate="8.9">
+          <div class="movie-card" data-popularity="12" data-rate="8.9" data-category="Fantasy" data-release-date="2003-12-26">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/LOTR.jpg" alt="" class="card-img" />
@@ -764,7 +769,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="15" data-rate="8.6">
+          <div class="movie-card" data-popularity="15" data-rate="8.6" data-category="War/Action" data-release-date="1998-07-24">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/saving-private-ryan.jpg" alt="" class="card-img" />
@@ -794,7 +799,7 @@
             </a>
           </div>
           
-            <div class="movie-card" data-rate="8.6" data-popularity="15" data-category="Sci-fi">
+            <div class="movie-card" data-rate="8.6" data-popularity="15" data-category="Sci-fi/Adventure" data-release-date="2014-11-06">
               
               <a href="movie-page.html">
               <div class="card-head">
@@ -825,7 +830,7 @@
               </a>
             </div>
           
-          <div class="movie-card" data-rate="8.5">
+          <div class="movie-card" data-rate="8.5" data-category="Action/Adventure" data-release-date="2021-05-05">
             <div class="card-head">
               <img src="./assets/images/movies/gladiator.jpg" alt="" class="card-img" />
 
@@ -853,7 +858,7 @@
             </div>
           </div>
 
-          <div class="movie-card" data-popularity="1" data-rate="8.4">
+          <div class="movie-card" data-popularity="1" data-rate="8.4" data-category="Action/Sci-fi" data-release-date="2019-04-26">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/endgame.jpg" alt="" class="card-img" />
@@ -883,7 +888,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="3" data-rate="5.4">
+          <div class="movie-card" data-popularity="3" data-rate="5.4" data-category="Acion/Adventure" data-release-date="2020-12-16">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/ww84.jpg" alt="" class="card-img" />
@@ -913,7 +918,7 @@
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="6" data-rate="6.8">
+          <div class="movie-card" data-popularity="6" data-rate="6.8" data-category="Action/Sci-fi" data-release-date="2021-03-07">
             <a href="movie-page.html">
             <div class="card-head">
               <img src="./assets/images/movies/captain-marvel.jpg" alt="" class="card-img" />
@@ -928,9 +933,7 @@
                   <span>6.8</span>
                 </div>
 
-                <div class="play">
-                  <ion-icon name="play-circle-outline"></ion-icon>
-                </div>
+                
               </div>
             </div>
 
@@ -949,6 +952,8 @@
 
 
       </section>
+      <button onclick="scroll_to_top()" id="to_top"><ion-icon style="font-size: 25px;"
+        name="arrow-up-outline"></ion-icon></button>
 
 
 
@@ -1025,6 +1030,28 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    //scroll to top 
+
+    var to_top_button = document.getElementById("to_top");
+
+    window.onscroll = function () { scroll_detect() };
+
+    function scroll_detect() {
+      if (document.documentElement.scrollTop > 169) {
+        to_top_button.style.display = "block";
+      } else {
+        to_top_button.style.display = "none";
+      }
+    }
+    function scroll_to_top() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  </script>
 </body>
 
 </html>

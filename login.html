@@ -14,11 +14,17 @@
 
   gtag('config', 'G-MVL98BG1ZF');
 </script>
+<script>
+    function closewindow(){
+        window.close();
+        window.opener.location.reload();
+    }
+</script>
 </head>    
 </body>
 </html>
     <head>
-        <link rel="stylesheet" href="login.css">
+        <link rel="stylesheet" href="./assets/css/login.css">
     </head>
     <body>
         <div class="box">
@@ -29,7 +35,7 @@
                 <label>Password</label>
                 <input type="password" placeholder="Enter your password">
                 <a href="blank.html" class="forgot">Forgot password</a>
-                <input type="submit" value="LOGIN">
+                <input onclick="closewindow()" type="submit" value="LOGIN">
                 
             </div>
         </div>
