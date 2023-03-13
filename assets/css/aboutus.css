@@ -1,0 +1,48 @@
+/* ABOUT US */
+
+.about {
+  margin: 40px;
+}
+
+.about h1 {
+  color: #007fff;
+  margin: 20px 0;
+  border-bottom: solid 2px white;
+}
+
+.about p {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.about h3 {
+  color: #007fff;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.about ul li {
+  list-style: disc;
+  margin-top: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+.about ul {
+  margin: 10px 40px;
+}
+
+.about .names {
+  color: #007fff;
+  font-weight: bolder;
+}
+
+.links {
+  transition: 0.2s ease-in-out;
+}
+
+.links:hover {
+  color: #007fff;
+}

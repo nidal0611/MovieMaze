@@ -1,0 +1,73 @@
+/*  Movie-Page  */
+
+.trailer-card {
+  margin-top: 20px;
+  display: flex;
+  gap: 50px;
+}
+
+.trailer-card video {
+  border-radius: 10px;
+  width: 60%;
+  height: auto;
+}
+
+.trailer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 20px;
+  background-color: hsla(218, 39%, 14%, 0.8);
+  padding: 40px 40px;
+  border-radius: 10px;
+}
+
+.trailer-info h3 {
+  font-size: 44px;
+}
+
+.trailer-info h4 {
+  color: #007fff;
+  margin-bottom: -10px;
+}
+
+.trailer-info-time {
+  display: flex;
+  justify-content: space-around;
+  margin-top: -10px;
+}
+
+.cast {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.cast img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+.cast-actor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.cast-actor h4 {
+  text-align: center;
+  margin-top: 4px;
+  color: white;
+}
+
+.reviews-container {
+  background-color: hsla(218, 39%, 14%, 0.8);
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  padding: 40px;
+  margin: 20px 40px;
+  border-radius: 10px;
+}

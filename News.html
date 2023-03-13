@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png" />
 
@@ -33,15 +32,11 @@
 
 <body>
   <div class="container">
-    <!--
-          - #HEADER SECTION
-        -->
+    <!-- navbar -->
 
     <header class="">
       <div class="navbar">
-        <!--
-              - menu button for small screen
-            -->
+        <!-- menu button for small screen -->
         <button class="navbar-menu-btn">
           <span class="one"></span>
           <span class="two"></span>
@@ -52,9 +47,7 @@
           <img src="./assets/images/MovieMaze.png" alt="" />
         </a>
 
-        <!--
-              - navbar navigation
-            -->
+        <!-- navbar navigation-->
 
         <nav class="">
           <ul class="navbar-nav">
@@ -64,22 +57,40 @@
           </ul>
         </nav>
 
-        <!--
-              sign-in
-            -->
+        <!-- search and sign-in -->
 
         <div class="navbar-actions">
           <div class="navbar-form">
+            <input id="searchBox" type="text" name="search" placeholder="Search..." class="navbar-form-search" />
+              <script>
+                const inputElement = document.getElementById("searchBox");
+                inputElement.addEventListener("keydown", function (event) {
+                  if (event.key === "Enter") {
+                    search2();
+                  }
+                });
+                </script>
+            <button class="navbar-form-btn">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+
             <button class="navbar-form-close">
               <ion-icon name="close-circle-outline"></ion-icon>
             </button>
           </div>
+
+          <!--search button for small screen -->
+
+          <button class="navbar-search-btn">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+
           <a href="#" class="navbar-signin">
-            <a href="Login page/login.html"><span>Sign in</span></a>
+            <button onclick="login()"><span>Sign in</span></button>
             <ion-icon style="color: #007FFF;" name="log-in-outline"></ion-icon>
           </a>
+
         </div>
-      </div>
 
     </header>
 
@@ -143,21 +154,22 @@
                   <h1 >Top Grossing</h1>
                  <div class="top3">
                   <div class="movie-li">
-                    <img src="./assets/images/movies/avatar.jpg"/>
+                    <a href="movie-page.html"><img src="./assets/images/movies/avatar.jpg"/></a>
                     <span>1-Avatar</span>
                     <div class="text">
                    <ion-icon  name="cash-outline"></ion-icon><span>2.923B$</span>
                     </div>
+                  
                   </div>
                   <div class="movie-li">
-                    <img src="./assets/images/movies/ant-man_4.jpg"/>
+                    <a href="movie-page.html"><img src="./assets/images/movies/ant-man_4.jpg"/></a>
                     <span>2-Ant Man</span>
                     <div class="text">
                     <ion-icon  name="cash-outline"></ion-icon> <span>519M$</span>
                   </div>
                   </div>
                   <div class="movie-li">
-                    <img src="./assets/images/movies/cocaine-bear.jpg"/>
+                    <a href="movie-page.html"><img src="./assets/images/movies/cocaine-bear.jpg"/></a>
                     <span>3-Cocaine Bear</span>
                     <div class="text">
                       <ion-icon  name="cash-outline"></ion-icon><span>34.1M$</span>
@@ -171,9 +183,7 @@
       <button onclick="scroll_to_top()" id="to_top"><ion-icon style="font-size: 25px;"
         name="arrow-up-outline"></ion-icon></button>
   </div>
-    <!--
-      - FOOTER SECTION
-    -->
+    <!-- FOOTER SECTION -->
     <footer>
         <div class="footer-content">
           <div class="footer-brand">
@@ -199,9 +209,9 @@
             <ul>
               <h4 class="link-heading">MovieMaze</h4>
   
-              <li class="link-item"><a href="#">About us</a></li>
-              <li class="link-item"><a href="#">My profile</a></li>
-              <li class="link-item"><a href="#">Contacts</a></li>
+              <li class="link-item"><a href="index.html#viewSearch" >Movies</a></li>
+              <li class="link-item"><a href="login.html">My profile</a></li>
+              <li class="link-item"><a href="about_us.html">Contacts</a></li>
             </ul>
   
             <ul>
@@ -231,32 +241,9 @@
     </div>
     <script src="./assets/js/main.js"></script>
   
-    <!--
-            - ionicon link
-          -->
+    <!-- ionicon link(import) -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script>
-      //scroll to top 
-  
-      var to_top_button = document.getElementById("to_top");
-  
-      window.onscroll = function () { scroll_detect() };
-  
-      function scroll_detect() {
-        if (document.documentElement.scrollTop > 169) {
-          to_top_button.style.display = "block";
-        } else {
-          to_top_button.style.display = "none";
-        }
-      }
-      function scroll_to_top() {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-      }
-    </script>
   </body>
   
   </html>

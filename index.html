@@ -3,133 +3,50 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- for media query -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png" />
   <title>MovieMaze</title>
 
-  <!--
-    - custom css link
-  -->
+  <!--custom css link -->
   <link rel="stylesheet" href="./assets/css/main.css" />
   <link rel="stylesheet" href="./assets/css/media_query.css" />
 
-  <!--
-    - google font link
-  -->
+  <!-- google font link-->
   <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
-  <script>
-    function search() {
-      var filter=document.getElementById("category-filter");
-      filter.value="genres";
-      var input, filter, ul, li, a, i, txtValue;
-      input = document.getElementById("searchBox");
-      filter = input.value.toUpperCase();
-      ul = document.getElementsByClassName("moviesGrid")[0];
-      li = document.getElementsByClassName("movie-card");
-      for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("h3")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          li[i].style.display = "";
-        } else {
-          li[i].style.display = "none";
-        }
-      }
-    }
-    /* categories function */
-    function hideElementsOnSelectChange(selectId, elementClass) {
-      const select = document.getElementById(selectId);
-      const elements = document.getElementsByClassName(elementClass);
-      let optionValues = [];
 
-      for (let i = 0; i < elements.length; i++) {
-        let category = elements[i].getAttribute('data-category');
-        if (!optionValues.includes(category) && category) {
-          optionValues.push(category);
-          let option = document.createElement('option');
-          option.value = category;
-          option.text = category;
-          select.appendChild(option);
-        }
-      }
-
-      select.addEventListener('change', function () {
-        let selectValue = this.value;
-        let showElements = [];
-        let hideElements = [];
-
-        for (let i = 0; i < elements.length; i++) {
-          let category = elements[i].getAttribute('data-category');
-          if (category === selectValue) {
-            showElements.push(elements[i]);
-          } else {
-            hideElements.push(elements[i]);
-          }
-        }
-
-        if (selectValue === 'genres') {
-          for (let i = 0; i < elements.length; i++) {
-            elements[i].style.display = '';
-          }
-        } else {
-          for (let i = 0; i < showElements.length; i++) {
-            showElements[i].style.display = '';
-          }
-
-          for (let i = 0; i < hideElements.length; i++) {
-            hideElements[i].style.display = 'none';
-          }
-        }
-      });
-     
-      }
-    
- function refresh(){
-        location.reload();
- }
- function login(){
-  window.open("login.html");
- }
-  </script>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVL98BG1ZF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MVL98BG1ZF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-  gtag('config', 'G-MVL98BG1ZF');
-</script>
+    gtag("config", "G-MVL98BG1ZF");
+  </script>
 </head>
 
-<body onload="hideElementsOnSelectChange('category-filter', 'movie-card')">
-  <!--
-    - main container
-  -->
+<body onload="hideElementsOnSelectChange('category-filter', 'movie-card'),loadsearch()">
+  <!-- main container -->
   <div class="container">
-    <!--
-      - #HEADER SECTION
-    -->
+    <!--navbar -->
 
-    <header class="">
-      <div class="navbar">
-        <!--
-          - menu button for small screen
-        -->
-        <button class="navbar-menu-btn">
+    <header id="header">
+      <div class="navbar" id="nav">
+        <!--menu button for small screen-->
+        <button class="navbar-menu-btn" id=navbar-menu-btn">
           <span class="one"></span>
           <span class="two"></span>
           <span class="three"></span>
         </button>
 
         <a href="index.html" class="navbar-brand">
-          <img  src="./assets/images/MovieMaze.png" alt="" />
+          <img src="./assets/images/MovieMaze.png" alt="" />
         </a>
 
-        <!--
-          - navbar navigation
-        -->
+        <!-- navbar navigation-->
 
         <nav class="">
           <ul class="navbar-nav">
@@ -139,14 +56,13 @@
           </ul>
         </nav>
 
-        <!--
-          - search and sign-in
-        -->
+        <!-- search and sign-in -->
 
         <div class="navbar-actions">
-          <div class="navbar-form">
+          <div class="navbar-form" id="navbar-form">
             <input id="searchBox" type="text" name="search" placeholder="Search..." class="navbar-form-search"
               onkeyup="search()" />
+            <!-- when searching enter scrolls to results-->
             <script>
               const inputElement = document.getElementById("searchBox");
 
@@ -154,46 +70,38 @@
                 if (event.key === "Enter") {
                   const targetElement = document.getElementById("viewSearch");
                   window.location.hash = "#targetElement";
-                  targetElement.scrollIntoView({behavior:"smooth"});
+                  targetElement.scrollIntoView({ behavior: "smooth" });
                 }
               });
             </script>
-            <button class="navbar-form-btn">
+            <button class="navbar-form-btn" id="navbar-form-btn">
               <ion-icon name="search-outline"></ion-icon>
             </button>
 
-            <button class="navbar-form-close">
+            <button class="navbar-form-close" id="navbar-form-close">
               <ion-icon name="close-circle-outline"></ion-icon>
             </button>
           </div>
 
-          <!--
-            - search button for small screen
-          -->
+          <!--search button for small screen -->
 
-          <button class="navbar-search-btn">
+          <button class="navbar-search-btn" id="navbar-search-btn">
             <ion-icon name="search-outline"></ion-icon>
           </button>
 
           <a href="#" class="navbar-signin">
             <button onclick="login()"><span>Sign in</span></button>
-            <ion-icon style="color: #007FFF;" name="log-in-outline"></ion-icon>
-          </a>
+            <ion-icon style="color: #007fff" name="log-in-outline"></ion-icon>
           </a>
         </div>
       </div>
     </header>
 
-    <!--
-      - MAIN SECTION
-    -->
     <main>
-      <!--
-        - #BANNER SECTION
-      -->
+      <!-- image carousel-->
       <section class="banner">
         <div class="banner-card">
-          <img src="./assets/images/John-Wick-3.jpg" class="banner-img" alt="" />
+          <a href="movie-page.html"><img src="./assets/images/John-Wick-3.jpg" class="banner-img" alt="" /></a>
 
           <div class="card-content">
             <div class="card-info">
@@ -211,15 +119,13 @@
                 <ion-icon name="time"></ion-icon>
                 <span>2h 11m</span>
               </div>
-
-
             </div>
 
             <h2 class="card-title">John Wick: Chapter 4</h2>
           </div>
         </div>
         <div class="banner-card">
-          <img src="./assets/images/moon.jpg" class="banner-img" alt="" />
+          <a href="movie-page.html"><img src="./assets/images/moon.jpg" class="banner-img" alt="" /></a>
 
           <div class="card-content">
             <div class="card-info">
@@ -237,15 +143,13 @@
                 <ion-icon name="time"></ion-icon>
                 <span>3h</span>
               </div>
-
-
             </div>
 
             <h2 class="card-title">Killers Of The Flower Moon</h2>
           </div>
         </div>
         <div class="banner-card">
-          <img src="./assets/images/oppenheimer.webp" class="banner-img" alt="" />
+          <a href="movie-page.html"><img src="./assets/images/oppenheimer.webp" class="banner-img" alt="" /></a>
 
           <div class="card-content">
             <div class="card-info">
@@ -263,8 +167,6 @@
                 <ion-icon name="time"></ion-icon>
                 <span>2h 30m</span>
               </div>
-
-
             </div>
 
             <h2 class="card-title">Oppenheimer</h2>
@@ -286,9 +188,9 @@
         showslides(index);
 
         function change(x) {
-          showslides(index += 1);
+          showslides((index += 1));
         }
-
+        /* automatically switch between images */
         setInterval(function () {
           change(1);
         }, 4000);
@@ -296,7 +198,7 @@
         function showslides(x) {
           var images = document.getElementsByClassName("banner-card");
           var dots = document.getElementsByClassName("dot");
-
+          /* when images end */
           if (x > images.length) {
             index = 1;
           }
@@ -313,30 +215,25 @@
 
           images[index - 1].style.display = "block";
           dots[index - 1].className += " active";
-
         }
       </script>
 
-
-
-      <!--
-        - #MOVIES SECTION
-      -->
+      <!--  movies grid -->
       <section class="movies" id="viewSearch">
-        <!--
-          - filter bar
-        -->
+        <!--filter bar -->
         <div class="filter-bar">
           <div class="filter-dropdowns">
+            <!-- category filter-->
             <select name="genre" class="genre" id="category-filter">
               <option value="genres">All genres</option>
             </select>
-
           </div>
-        <button onclick="refresh()"><ion-icon class="refresh" name="refresh-circle"></ion-icon></button>
+          <button onclick="refresh()">
+            <ion-icon class="refresh" name="refresh-circle"></ion-icon>
+          </button>
+          <!-- other filters-->
           <div class="filter-radios">
-            
-            <input type="radio" name="grade" id="featured" value="rate" >
+            <input type="radio" name="grade" id="featured" value="rate" />
             <label for="featured">Highest rated</label>
 
             <input type="radio" name="grade" id="popular" value="popular" />
@@ -346,462 +243,396 @@
             <label for="newest">Newest</label>
 
             <div class="checked-radio-bg"></div>
-
           </div>
-          <script>
-
-            function sortMovies() {
-              const radios = document.getElementsByName('grade');
-              let selectedRadio;
-              for (let i = 0; i < radios.length; i++) {
-                if (radios[i].checked) {
-                  selectedRadio = radios[i];
-                  break;
-                }
-              }
-
-              const movies = document.getElementsByClassName('movie-card');
-              const moviesArray = Array.from(movies);
-
-              if (selectedRadio.value === 'popular') {
-                moviesArray.sort((a, b) => {
-                  const aPopularity = parseInt(a.getAttribute('data-popularity'));
-                  const bPopularity = parseInt(b.getAttribute('data-popularity'));
-                  return bPopularity - aPopularity;
-                });
-              } else if (selectedRadio.value === 'newest') {
-                moviesArray.sort((a, b) => {
-                  const aReleaseDate = new Date(a.getAttribute('data-release-date'));
-                  const bReleaseDate = new Date(b.getAttribute('data-release-date'));
-                  return bReleaseDate - aReleaseDate;
-                });
-
-              } else if (selectedRadio.value === 'rate') {
-                moviesArray.sort((a, b) => {
-                  const arate = parseFloat(a.getAttribute('data-rate'));
-                  const brate = parseFloat(b.getAttribute('data-rate'));
-                  return brate - arate;
-                });
-              }
-
-              const movieList = document.getElementById('movie-list');
-              movieList.innerHTML = '';
-              moviesArray.forEach(movie => {
-                movieList.appendChild(movie);
-              });
-            }
-
-            const sortRadios = document.getElementsByName('grade');
-            sortRadios.forEach(radio => {
-              radio.addEventListener('change', sortMovies);
-            });
-          </script>
-
         </div>
 
-        <!--
-          - movies grid
-        -->
-
+        <!-- movies grid-->
+        <h4 id="msg">No results.</h4>
         <div class="movies-grid" id="movie-list">
-          
-          <div class="movie-card" data-category="Acion/Comedy" data-popularity="1" data-rate="6.4" data-release-date="2021-11-04">
+          <div class="movie-card" data-category="Acion/Comedy" data-popularity="1" data-rate="6.4"
+            data-release-date="2021-11-04">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/red-notice.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/red-notice.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>6.4</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>6.4</span>
+              <div class="card-body">
+                <h3 class="card-title">Red Notice</h3>
+
+                <div class="card-info">
+                  <span class="genre">Action/Comedy</span>
+                  <span class="year">2021</span>
                 </div>
-
-                
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Red Notice</h3>
-
-              <div class="card-info">
-                <span class="genre">Action/Comedy</span>
-                <span class="year">2021</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-category="Action/Adventure" data-popularity="2" data-rate="7.4" data-release-date="2021-12-17">
+          <div class="movie-card" data-category="Action/Adventure" data-popularity="2" data-rate="7.4"
+            data-release-date="2021-12-17">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/spider-men.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/spider-men.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>7.4</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>7.4</span>
+              <div class="card-body">
+                <h3 class="card-title">Spider-Man: Homecoming</h3>
+
+                <div class="card-info">
+                  <span class="genre">Action/Adventure</span>
+                  <span class="year">2017</span>
                 </div>
-
-                
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Spider-Man: Homecoming</h3>
-
-              <div class="card-info">
-                <span class="genre">Action/Adventure</span>
-                <span class="year">2017</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-category="Sci-fi/Action" data-popularity="3" data-rate="5.7" data-release-date="2021-12-22">
+          <div class="movie-card" data-category="Sci-fi/Action" data-popularity="3" data-rate="5.7"
+            data-release-date="2021-12-22">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/matrix.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/matrix.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>5.7</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>N/A</span>
+              <div class="card-body">
+                <h3 class="card-title">The Matrix Resurrections</h3>
+
+                <div class="card-info">
+                  <span class="genre">Sci-fi/Action</span>
+                  <span class="year">2021</span>
                 </div>
-
-                
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title ">The Matrix Resurrections</h3>
-
-              <div class="card-info">
-                <span class="genre">Sci-fi/Action</span>
-                <span class="year">2021</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-category="Adventure/Action" data-popularity="4" data-rate="6.8" data-release-date="2021-11-05">
+          <div class="movie-card" data-category="Adventure/Action" data-popularity="4" data-rate="6.8"
+            data-release-date="2021-11-05">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/eternals.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/eternals.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>6.8</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>6.8</span>
+              <div class="card-body">
+                <h3 class="card-title">Eternals</h3>
+
+                <div class="card-info">
+                  <span class="genre">Adventure/Action</span>
+                  <span class="year">2021</span>
                 </div>
-
-               
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Eternals</h3>
-
-              <div class="card-info">
-                <span class="genre">Adventure/Action</span>
-                <span class="year">2021</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="8" data-rate="8.2" data-category="Sci-fi/Adventure" data-release-date="2021-10-22">
+          <div class="movie-card" data-popularity="8" data-rate="8.2" data-category="Sci-fi/Adventure"
+            data-release-date="2021-10-22">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/dune.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/dune.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>8.2</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>8.2</span>
+              <div class="card-body">
+                <h3 class="card-title">Dune</h3>
+
+                <div class="card-info">
+                  <span class="genre">Sci-fi/Adventure</span>
+                  <span class="year">2021</span>
                 </div>
-
-               
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Dune</h3>
-
-              <div class="card-info">
-                <span class="genre">Sci-fi/Adventure</span>
-                <span class="year">2021</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="14" data-rate="8.3" data-category="War/Drama" data-release-date="2019-12-25">
+          <div class="movie-card" data-popularity="14" data-rate="8.3" data-category="War/Drama"
+            data-release-date="2019-12-25">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/1917.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/1917.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>8.3</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>8.3</span>
+              <div class="card-body">
+                <h3 class="card-title">1917</h3>
+
+                <div class="card-info">
+                  <span class="genre">War/Drama</span>
+                  <span class="year">2019</span>
                 </div>
-
-                
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">1917</h3>
-
-              <div class="card-info">
-                <span class="genre">War/Drama</span>
-                <span class="year">2019</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="7" data-rate="7.6" data-category="Action/Fantasy" data-release-date="2021-09-02">
+          <div class="movie-card" data-popularity="7" data-rate="7.6" data-category="Action/Fantasy"
+            data-release-date="2021-09-02">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/shang-chi.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/shang-chi.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>7.6</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>7.6</span>
+              <div class="card-body">
+                <h3 class="card-title">
+                  Shang-Chi and The Legend of The Ten Rings
+                </h3>
+
+                <div class="card-info">
+                  <span class="genre">Action/Fantasy</span>
+                  <span class="year">2021</span>
                 </div>
-
-                
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">
-                Shang-Chi and The Legend of The Ten Rings
-              </h3>
-
-              <div class="card-info">
-                <span class="genre">Action/Fantasy</span>
-                <span class="year">2021</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="1" data-rate="8.0" data-category="Action/Adventure" data-release-date="2006-11-16">
+          <div class="movie-card" data-popularity="1" data-rate="8.0" data-category="Action/Adventure"
+            data-release-date="2006-11-16">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/casino-royale.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/casino-royale.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>8.0</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>8.0</span>
+              <div class="card-body">
+                <h3 class="card-title">Casino Royale</h3>
+
+                <div class="card-info">
+                  <span class="genre">Action/Adventure</span>
+                  <span class="year">2006</span>
                 </div>
-
-               
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Casino Royale</h3>
-
-              <div class="card-info">
-                <span class="genre">Action/Adventure</span>
-                <span class="year">2006</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="10" data-rate="9.0" data-category="Action/Adventure" data-release-date="2008-07-24">
+          <div class="movie-card" data-popularity="10" data-rate="9.0" data-category="Action/Adventure"
+            data-release-date="2008-07-24">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/dark-knight.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/dark-knight.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>9.0</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>9.0</span>
+              <div class="card-body">
+                <h3 class="card-title">The Dark Knight</h3>
+
+                <div class="card-info">
+                  <span class="genre">Action/Adventure</span>
+                  <span class="year">2008</span>
                 </div>
-
-               
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">The Dark Knight</h3>
-
-              <div class="card-info">
-                <span class="genre">Action/Adventure</span>
-                <span class="year">2008</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="5" data-rate="7.3" data-category="Action/Adventure" data-release-date="2018-02-14">
+          <div class="movie-card" data-popularity="5" data-rate="7.3" data-category="Action/Adventure"
+            data-release-date="2018-02-14">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/panther.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/panther.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>7.3</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>7.3</span>
+              <div class="card-body">
+                <h3 class="card-title">Black Panther</h3>
+
+                <div class="card-info">
+                  <span class="genre">Action/Adventure</span>
+                  <span class="year">2018</span>
                 </div>
-
-                
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Black Panther</h3>
-
-              <div class="card-info">
-                <span class="genre">Action/Adventure</span>
-                <span class="year">2018</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="9" data-rate="6.7" data-category="Action/Adventure" data-release-date="2018-10-05">
+          <div class="movie-card" data-popularity="9" data-rate="6.7" data-category="Action/Adventure"
+            data-release-date="2018-10-05">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/venom.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/venom.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>6.7</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>6.7</span>
+              <div class="card-body">
+                <h3 class="card-title">Venom</h3>
+
+                <div class="card-info">
+                  <span class="genre">Action/Adventure</span>
+                  <span class="year">2018</span>
                 </div>
-
-                
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Venom</h3>
-
-              <div class="card-info">
-                <span class="genre">Action/Adventure</span>
-                <span class="year">2018</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="12" data-rate="8.9" data-category="Fantasy" data-release-date="2003-12-26">
+          <div class="movie-card" data-popularity="12" data-rate="8.9" data-category="Fantasy"
+            data-release-date="2003-12-26">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/LOTR.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/LOTR.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>8.9</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>8.9</span>
+              <div class="card-body">
+                <h3 class="card-title">
+                  Lord Of The Rings: Return Of The King
+                </h3>
+
+                <div class="card-info">
+                  <span class="genre">Fantasy/Adventure</span>
+                  <span class="year">2003</span>
                 </div>
-
-                
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">
-                Lord Of The Rings: Return Of The King
-              </h3>
-
-              <div class="card-info">
-                <span class="genre">Fantasy/Adventure</span>
-                <span class="year">2003</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="15" data-rate="8.6" data-category="War/Action" data-release-date="1998-07-24">
+          <div class="movie-card" data-popularity="15" data-rate="8.6" data-category="War/Action"
+            data-release-date="1998-07-24">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/saving-private-ryan.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/saving-private-ryan.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>8.6</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>8.6</span>
+              <div class="card-body">
+                <h3 class="card-title">Saving Private Ryan</h3>
+
+                <div class="card-info">
+                  <span class="genre">War/Action</span>
+                  <span class="year">1998</span>
                 </div>
-
-                
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Saving Private Ryan</h3>
-
-              <div class="card-info">
-                <span class="genre">War/Action</span>
-                <span class="year">1998</span>
-              </div>
-            </div>
             </a>
           </div>
-          
-            <div class="movie-card" data-rate="8.6" data-popularity="15" data-category="Sci-fi/Adventure" data-release-date="2014-11-06">
-              
-              <a href="movie-page.html">
+
+          <div class="movie-card" data-rate="8.6" data-popularity="15" data-category="Sci-fi/Adventure"
+            data-release-date="2014-11-06">
+            <a href="movie-page.html">
               <div class="card-head">
                 <img src="./assets/images/movies/interstaller.jpg" alt="" class="card-img" />
 
@@ -814,8 +645,6 @@
                     <ion-icon name="star-outline"></ion-icon>
                     <span>8.6</span>
                   </div>
-
-                 
                 </div>
               </div>
 
@@ -827,9 +656,9 @@
                   <span class="year">2014</span>
                 </div>
               </div>
-              </a>
-            </div>
-          
+            </a>
+          </div>
+
           <div class="movie-card" data-rate="8.5" data-category="Action/Adventure" data-release-date="2021-05-05">
             <div class="card-head">
               <img src="./assets/images/movies/gladiator.jpg" alt="" class="card-img" />
@@ -843,8 +672,6 @@
                   <ion-icon name="star-outline"></ion-icon>
                   <span>8.5</span>
                 </div>
-
-               
               </div>
             </div>
 
@@ -858,118 +685,106 @@
             </div>
           </div>
 
-          <div class="movie-card" data-popularity="1" data-rate="8.4" data-category="Action/Sci-fi" data-release-date="2019-04-26">
+          <div class="movie-card" data-popularity="1" data-rate="8.4" data-category="Action/Sci-fi"
+            data-release-date="2019-04-26">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/endgame.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/endgame.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>8.4</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>8.4</span>
+              <div class="card-body">
+                <h3 class="card-title">Avengers: Endgame</h3>
+
+                <div class="card-info">
+                  <span class="genre">Action/Sci-fi</span>
+                  <span class="year">2019</span>
                 </div>
-
-                
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Avengers: Endgame</h3>
-
-              <div class="card-info">
-                <span class="genre">Action/Sci-fi</span>
-                <span class="year">2019</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="3" data-rate="5.4" data-category="Acion/Adventure" data-release-date="2020-12-16">
+          <div class="movie-card" data-popularity="3" data-rate="5.4" data-category="Acion/Adventure"
+            data-release-date="2020-12-16">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/ww84.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/ww84.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>5.4</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>5.4</span>
+              <div class="card-body">
+                <h3 class="card-title">Wonder Woman 1984</h3>
+
+                <div class="card-info">
+                  <span class="genre">Action/Adventure</span>
+                  <span class="year">2020</span>
                 </div>
-
-               
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Wonder Woman 1984</h3>
-
-              <div class="card-info">
-                <span class="genre">Action/Adventure</span>
-                <span class="year">2020</span>
-              </div>
-            </div>
             </a>
           </div>
 
-          <div class="movie-card" data-popularity="6" data-rate="6.8" data-category="Action/Sci-fi" data-release-date="2021-03-07">
+          <div class="movie-card" data-popularity="6" data-rate="6.8" data-category="Action/Sci-fi"
+            data-release-date="2021-03-07">
             <a href="movie-page.html">
-            <div class="card-head">
-              <img src="./assets/images/movies/captain-marvel.jpg" alt="" class="card-img" />
+              <div class="card-head">
+                <img src="./assets/images/movies/captain-marvel.jpg" alt="" class="card-img" />
 
-              <div class="card-overlay">
-                <div class="bookmark">
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                <div class="card-overlay">
+                  <div class="bookmark">
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </div>
+
+                  <div class="rating">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>6.8</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="rating">
-                  <ion-icon name="star-outline"></ion-icon>
-                  <span>6.8</span>
+              <div class="card-body">
+                <h3 class="card-title">Captain Marvel</h3>
+
+                <div class="card-info">
+                  <span class="genre">Action/Sci-fi</span>
+                  <span class="year">2019</span>
                 </div>
-
-                
               </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-title">Captain Marvel</h3>
-
-              <div class="card-info">
-                <span class="genre">Action/Sci-fi</span>
-                <span class="year">2019</span>
-              </div>
-            </div>
             </a>
           </div>
-        
         </div>
-
-
       </section>
-      <button onclick="scroll_to_top()" id="to_top"><ion-icon style="font-size: 25px;"
-        name="arrow-up-outline"></ion-icon></button>
-
-
-
-
+      <!-- scroll to top button-->
+      <button onclick="scroll_to_top()" id="to_top">
+        <ion-icon style="font-size: 25px" name="arrow-up-outline"></ion-icon>
+      </button>
     </main>
 
-    <!--
-      - FOOTER SECTION
-    -->
+    <!--footer-->
     <footer>
       <div class="footer-content">
         <div class="footer-brand">
           <img src="./assets/images/MovieMaze.png" alt="" class="footer-logo" />
-          <p class="slogan">
-            Movies & TV Shows.
-          </p>
+          <p class="slogan">Movies & TV Shows.</p>
 
           <div class="social-link">
             <a href="#">
@@ -988,22 +803,19 @@
           <ul>
             <h4 class="link-heading">MovieMaze</h4>
 
-            <li class="link-item"><a href="#">About us</a></li>
-            <li class="link-item"><a href="#">My profile</a></li>
-            <li class="link-item"><a href="#">Contacts</a></li>
+            <li class="link-item">
+              <a href="index.html#viewSearch">Movies</a>
+            </li>
+            <li class="link-item"><a href="login.html">My profile</a></li>
+            <li class="link-item"><a href="about_us.html">Contacts</a></li>
           </ul>
 
           <ul>
             <h4 class="link-heading">Browse</h4>
             <li class="link-item"><a href="index.html">Home</a></li>
-              <li class="link-item"><a href="News.html">News</a></li>
-              <li class="link-item"><a href="about_us.html">About us</a></li>
-
+            <li class="link-item"><a href="News.html">News</a></li>
+            <li class="link-item"><a href="about_us.html">About us</a></li>
           </ul>
-
-
-
-
         </div>
       </div>
 
@@ -1020,38 +832,13 @@
     </footer>
   </div>
 
-  <!--
-    - custom js link
-  -->
+  <!-- custom js link-->
   <script src="./assets/js/main.js"></script>
 
-  <!--
-    - ionicon link
-  -->
+  <!--ionicon link (import)-->
+
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-  <script>
-    //scroll to top 
-
-    var to_top_button = document.getElementById("to_top");
-
-    window.onscroll = function () { scroll_detect() };
-
-    function scroll_detect() {
-      if (document.documentElement.scrollTop > 169) {
-        to_top_button.style.display = "block";
-      } else {
-        to_top_button.style.display = "none";
-      }
-    }
-    function scroll_to_top() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
-  </script>
 </body>
 
 </html>

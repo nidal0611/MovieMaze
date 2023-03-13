@@ -1,35 +1,22 @@
-/*-------------------------------------*\
-  #media_query.css
-\*-------------------------------------*/
-
-/**
- * copyright 2021 @codewithsadee 
- */
 
 
 
 
+ /* #RESPONSIVE FOR 1200px */
 
-/*-------------------------------------*\
-  #RESPONSIVE FOR 1200px
-\*-------------------------------------*/
 
 @media screen and (max-width: 1200px) {
 
   :root {
 
-    /**
-     * Spacing 
-     */
+    /* Spacing  */
 
     --px: 80px;
     /* padding-left & padding-right */
 
   }
 
-  /**
-   * HEADER RESPONSIVE
-   */
+  /* HEADER RESPONSIVE */
 
   header {
     position: fixed;
@@ -44,9 +31,7 @@
     top: 250px;
   }
 
-  /**
-   * small screen menu button style 
-   */
+  /* small screen menu button style */
 
   .navbar-menu-btn {
     display: block;
@@ -111,7 +96,7 @@
     justify-content: center;
     align-items: flex-start;
     padding-left: var(--px);
-    border-bottom: 1px solid var(--oxford-blue);
+    border-bottom: 1.5px solid var(--off-white);
   }
 
   .navbar-nav li:not(:last-child) {
@@ -167,9 +152,7 @@
   }
 
 
-  /**
-   * BANNER SECTION RESPONSIVE
-   */
+  /* BANNER SECTION RESPONSIVE */
 
   .banner {
     margin-top: 100px;
@@ -181,9 +164,7 @@
 
 
 
-  /**
-   * CATEGORY SECTION RESPONSIVE
-   */
+  /* CATEGORY SECTION RESPONSIVE */
 
   .category-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -191,9 +172,7 @@
 
 
 
-  /**
-   * FOOTER SECTION RESPONSIVE
-   */
+  /* FOOTER SECTION RESPONSIVE */
 
   .footer-content {
     flex-direction: column;
@@ -229,26 +208,20 @@
 
 
 
-/*-------------------------------------*\
-  #RESPONSIVE FOR 1024px
-\*-------------------------------------*/
+/* RESPONSIVE FOR 1024px */
 
 @media screen and (max-width: 1024px) {
 
   :root {
 
-    /**
-     * Spacing 
-     */
+    /*Spacing  */
 
     --px: 60px;
     /* padding-left & padding-right */
 
   }
 
-  /**
-   * BANNER SECTION 
-   */
+  /* BANNER SECTION */
   .banner-card .card-content {
     bottom: 40px;
     left: 60px;
@@ -311,44 +284,32 @@
 
 
 
-/*-------------------------------------*\
-  #RESPONSIVE FOR 768px
-\*-------------------------------------*/
+/* RESPONSIVE FOR 768px */
 
 @media screen and (max-width: 768px) {
 
   :root {
 
-    /**
-     * Spacing 
-     */
+    /* Spacing  */
 
     --px: 10px;
     /* padding-left & padding-right */
 
   }
 
-  /**
-   * BANNER SECTION 
-   */
+  /* BANNER SECTION  */
 
   .banner {
     display: none;
   }
 
-
-
-  /**
-   * MOVIE SECTION
-   */
+  /* MOVIE SECTION */
 
   .movies {
     margin-top: 120px;
   }
 
-  /**
-   * filter bar responsive
-   */
+  /*filter bar responsive*/
   .filter-bar {
     flex-direction: column;
     align-items: flex-start;
@@ -443,9 +404,7 @@
 
 
 
-/*-------------------------------------*\
-  #RESPONSIVE FOR 575px
-\*-------------------------------------*/
+/* RESPONSIVE FOR 575px */
 
 @media screen and (max-width: 575px) {
   :root {
@@ -456,10 +415,6 @@
 
     --px: 5px;
     /* padding-left & padding-right */
-
-    /**
-     * Typography 
-     */
     --section-heading: 32px;
     --fs-lg: 20px;
 
@@ -478,9 +433,7 @@
   }
 
 
-  /**
-   * FOOTER SECTION RISPONSIVE
-   */
+  /* FOOTER SECTION RESPONSIVE */
 
   .footer-copyright {
     flex-direction: column-reverse;
